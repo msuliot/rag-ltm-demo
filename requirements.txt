@@ -1,0 +1,6 @@
+git+https://github.com/msuliot/package.helpers.git
+python-dotenv
+colorama
+rich
+inputimeout
+requests
