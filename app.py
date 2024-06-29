@@ -183,7 +183,7 @@ def get_chat_completion_messages(conbine_message):
     # print_blue("Received a response from ChatGPT after sending the Profile, Long-Term Memory, Short-Term Memory, Pinecone content, and the question.")
     return response
 
-# RAG - Pinecone prompt
+# RAG - Pinecone
 def create_prompt(query, content):
     prompt_start = ("Answer the question based only on the content provided.\n\n" + "Context:\n") 
     prompt_end = (f"\n\nQuestion: {query}")
