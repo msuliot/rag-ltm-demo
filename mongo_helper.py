@@ -37,13 +37,11 @@ class MongoHelper:
         formatted_time_difference = str(time_difference).split('.')[0]
         return formatted_time_difference
 
-
     # CONVERSATION
     def conversation_delete(self, conversation_id):
         collection = self.db['conversations']
         response = collection.delete_one({"_id": ObjectId(conversation_id)})
         return response
-
 
     def conversation_create(self, profile_id):
         collection = self.db['conversations']
@@ -60,7 +58,6 @@ class MongoHelper:
         )
         return str(response.inserted_id), timestamp.strftime("%Y-%m-%d %H:%M:%S")
 
-
     def conversation_update(self, conversation_id, message):
         collection = self.db['conversations']
         timestamp = self.generate_timestamp()
@@ -73,7 +70,6 @@ class MongoHelper:
             }
         )
         return result
-
 
     def remove_empty_conversations(self, minute_threshold):
         collection = self.db['conversations']
@@ -115,7 +111,6 @@ class MongoHelper:
         else:
             print(f"Profile updated for user_id: {user_id}")
         
-
     def profile_find(self, user_id):
         collection = self.db['profiles']
         profile = collection.find_one({"user_id": user_id})
@@ -132,7 +127,6 @@ class MongoHelper:
         )
         return prompt
 
-
     # CONVERSATION SUMMARY
     def summary_update(self, conversation_id, conversation_summary):
         collection = self.db['conversations']  
@@ -145,7 +139,6 @@ class MongoHelper:
 
         return response
     
-
     def summary_find(self, pid):
         ltm = []
         collection = self.db['conversations']
@@ -154,7 +147,6 @@ class MongoHelper:
             if summary['summary'] != "":
                 ltm.append(summary['summary'])
         return ltm
-    
     
     def find_conversation_missing_summary(self):
         collection = self.db['conversations']
